@@ -25,4 +25,42 @@ def print_header():
 
 # https://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
 
+# Global Variables
+HEIGHT = 6
+WIDTH = 6
+CORNER = 2
+
+# board = []
+
+def create_board(board):
+  for i in range(HEIGHT):
+    for j in range(WIDTH):
+      if (j in range(0, CORNER) or j in range(WIDTH-CORNER, WIDTH)) and (i in range(0, CORNER) or i in range(HEIGHT-CORNER, HEIGHT)):
+        board[i, j] = " "
+      elif i == HEIGHT/2 and j == WIDTH/2:
+        board[i, j] = "O"
+      else:
+        board[i, j] = "X"
+      return board
+
+def print_board(board):
+  for i in range(HEIGHT):
+    for j in range(WIDTH):
+      print(board[i][j])
+    print("\n")
+  print("\n")
+  return
+
+def check_if_board_is_solved(board):
+  count = 0
+  for i in range(HEIGHT):
+    for j in range(WIDTH):
+      if board[i][j] == "X":
+        count+=1
+  if count ==1:
+    return True
+  else:
+    return False
+
 print_header()
+create_board([])
